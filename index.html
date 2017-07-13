@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Find ebooks</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  </head>
+  <body>
+    <h1>Find ebooks</h1>
+    <div id="app">
+      <input v-model="query">
+      <p v-if="query"><strong>Searching for:</strong> {{ query }}</p>
+      <button v-if="query" v-on:click="clear">Clear</button>
+      <section id="results">
+        <ol>
+          <book-result
+            v-for="book in results"
+            v-bind:book="book"
+            v-bind:key="book.id">
+          </book-result>
+        </ol>
+      </section>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
